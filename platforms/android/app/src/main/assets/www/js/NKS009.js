@@ -220,7 +220,7 @@ var app = {
                             "<li>" +
                             "<input type='checkbox' name='checkImg' id='"+chkName+"' value='"+data+"'>" + 
                             "<label for='"+chkName+"'></label>" +
-                            "<a href='ImageDetail('"+data+"');'>" + 
+                            "<a href=\"javascript:ImageDetail('"+results.rows.item(i).id+"');\">" + 
                             "<p class='thumb'><img src='"+data+"' alt='상세보기' class='imgGo' id='"+data+"'></p>" +
                             "<p class='num'>"+results.rows.item(i).id+"</p>" +
                             "</a>" +
@@ -251,9 +251,6 @@ var app = {
             $(this).prop('checked', chckStatus);
         });
     },
-    ImageDetail: function() {
-        alert(this.id);
-    },
     init: function() {
         CameraPreview.stopCamera();    
         myDB = window.sqlitePlugin.openDatabase(                    // myDB에 sqlite db 파일 정의
@@ -273,7 +270,14 @@ document.addEventListener('deviceready', function(){
     app.init();    
 }, false);
 
+/**
+ * 이미지 상세 보기
+ * @param {이미지 key} data 
+ */
 function ImageDetail(data)
 {
-    alert(data);
+    console.log(data);
+    var storage = window.localStorage;
+    storage.setItem("param", data);
+    location.href="NKS011.html";
 }

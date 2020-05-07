@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
 	<title>스마트 원전 - 현장 사진 전송</title>
-	<link rel="stylesheet" href="../../resources/css/style.css" />
-	<script type="text/javascript" src="../../resources/js/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src="../../resources/js/common.js"></script>
-	<script type="text/javascript" src="../../resources/js/jquery.bxslider.min.js"></script>
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			var picArea = $('.cntViewDtl .slideImg');
@@ -17,35 +17,33 @@
 				items.toggle();
 			});
 			// 이미지 slides
-			picArea.bxSlider({
-				
+			picArea.bxSlider({				
 				controls:false,
 				pager:false
 			});
-			// 이미지 중앙정렬
-			$(window).on('load resize', function(){
-				var thumbImg = $('.cntViewDtl .slideImg li img');
-				thumbImg.each(function(){
-					var imgH = $(this).height();
-					$(this).css('margin-top', -(imgH/2));
-				});
-			});
+			// // 이미지 중앙정렬
+			// $(window).on('load resize', function(){
+			// 	var thumbImg = $('.cntViewDtl .slideImg li img');
+			// 	thumbImg.each(function(){
+			// 		var imgH = $(this).height();
+			// 		$(this).css('margin-top', -(imgH/2));
+			// 	});
+			// });
 		});
 	</script>
 </head>
 <body>
 <div class="cntViewDtl">
 	<h1 class="tit">SAB144FT01</h1>
-	<ul class="slideImg">
-		<li><img src="../../resources/images/_temp/@pic01.jpg" alt=""></li>
-		<li><img src="../../resources/images/_temp/@pic02.jpg" alt=""></li>
-		<li><img src="../../resources/images/_temp/@pic03.jpg" alt=""></li>
-		<li><img src="../../resources/images/_temp/@pic01.jpg" alt=""></li>
+	<ul class="slideImg" id="imgShow">
+
 	</ul>
 	<div class="btnGroup">
 		<a href="" class="btnDel">삭제</a>
 		<a href="" class="btnSend">사진 전송</a>
 	</div>
 </div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/NKS011.js"></script>
 </body>
 </html>
