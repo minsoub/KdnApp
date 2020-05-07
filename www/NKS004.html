@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>스마트 원전 - 현장 사진 전송</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var btnSet = $('.wrapCam .btnSet a');
+
+			btnSet.on('click', function(){
+				$(this).next('.setName').toggle();
+				return false
+			});
+			$(document).click(function(e){ //사진이름 지정 레이어 외 영역 터치시 숨기기
+				if($('.setName').is(':visible')){
+					var tg = $('.setName');
+					if(!$('.setName').has(e.target).length){
+						tg.hide();
+					}else {
+						console.log("chck01 clicked...");
+						if ($("#chck01").is(":checked") == true)
+						{
+							$("#chck01").prop("checked", false);
+						}else {
+							$("#chck01").prop("checked", true);
+						}
+					}
+				}
+				return false;
+			});
+
+			$("#chck01").click(function(){
+				console.log("chck01 clicked...");
+				if ($("#chck01").is(":checked") == true)
+				{
+					$("#chck01").prop("checked", false);
+				}else {
+					$("#chck01").prop("checked", true);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="wrapCam">
+	<div class="btnSetGroup">
+		<input type="hidden" id="flashmode" value="off">
+		<div class="btnFlash"><a id="btnFlash" href="">플래시</a></div>
+		<div class="btnSet">
+			<a href="">설정</a>
+			<div class="setName">
+				<input type="checkbox" name="chck" id="chck01">
+				<label for="chck01">사진이름 지정</label>
+			</div>
+		</div>
+	</div>
+	<div class="btnCam">
+		<ul class="slctZoom">
+			<li id="zoom1"><a id="zoom1_href" href="">X 0.5</a></li>
+			<li id="zoom2"><a id="zoom2_href" href="" class="active">X 1.0</a></li>
+			<li id="zoom3"><a id="zoom3_href" href="">X 2.0</a></li>
+		</ul>
+		<div id="btnShot" class="btnShot"><a href="">촬영</a></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/sqlite.js"></script>
+<script type="text/javascript" src="js/NKS004.js"></script>
+</body>
+</html>

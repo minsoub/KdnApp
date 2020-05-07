@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>스마트 원전 - 현장 사진 전송</title>
+	<link rel="stylesheet" href="../../resources/css/style.css" />
+	<script type="text/javascript" src="../../resources/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="../../resources/js/common.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// 전체 선택
+			var chckAll = $('.cntWrapImg #chckAll');
+			var inputChck = $('.cntWrapImg .listImg li input[type="checkbox"]');
+			inputChck.on('click', function(){
+				var chckedLeng = $('.cntWrapImg .listImg li input[type="checkbox"]:checked');
+				if(inputChck.length == chckedLeng.length){ // 전체 체크 되었을 시
+					chckAll.prop('checked', true);
+				} else {
+					chckAll.prop('checked', false);
+				}
+			});
+			chckAll.on('click', function(){
+				var chckStatus = $(this).prop('checked');
+				inputChck.each(function(){
+					$(this).prop('checked', chckStatus);
+				});
+			});
+			// 이미지 중앙정렬
+			$(window).on('load resize', function(){
+				var thumbImg = $('.cntWrapImg .listImg .thumb img');
+				thumbImg.each(function(){
+					var imgH = $(this).height();
+					$(this).css('margin-top', -(imgH/2));
+				});
+			});
+			openLayer('.layerProgBar');
+		});
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<!-- header -->
+	<div class="header">
+		<span class="btnPrev"><a href="">이전 페이지</a></span>
+		<h1 class="tit">사진 전송</h1>
+	</div>
+	<!-- //header -->
+	<!-- contents -->
+	<div class="cntWrapImg">
+		<p class="wrapInput"><input type="checkbox" name="chckAll" id="chckAll"> <label for="chckAll">전체</label></p>
+		<ul class="listImg">
+			<li>
+				<input type="checkbox" name="chckImg" id="chck01">
+				<label for="chck01"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck02">
+				<label for="chck02"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic02.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck03">
+				<label for="chck03"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic03.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck04">
+				<label for="chck04"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck05">
+				<label for="chck05"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic03.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck06">
+				<label for="chck06"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck07">
+				<label for="chck07"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck08">
+				<label for="chck08"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic02.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck09">
+				<label for="chck09"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" name="chckImg" id="chck10">
+				<label for="chck10"></label>
+				<a href="">
+					<p class="thumb"><img src="../../resources/images/_temp/@pic01.jpg" alt=""></p>
+					<p class="num">0417152345</p>
+				</a>
+			</li>
+		</ul>
+		<div class="btnGroup">
+			<a href="" class="btnDel">삭제</a>
+			<a href="" class="btnSend">사진 전송</a>
+		</div>		
+	</div>
+	<!-- //contents -->
+</div>
+<!-- 사진 전송 progress bar -->
+<div class="wrapPop layerProgBar">
+	<div class="popCnt">
+		<p class="txt">사진을 전송중입니다</p>
+		<div class="wrapBar">
+			<p class="bar" style="width:35%"></p>
+		</div>
+		<div class="num">7/10</div>
+	</div>
+</div>
+<!-- //사진 전송 progress bar -->
+</body>
+</html>

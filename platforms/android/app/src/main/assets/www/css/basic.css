@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/* ========== reset ========== */
+a,address,article,aside,audio,
+b,blockquote,body,button,
+canvas,caption,
+dd,dfn,dl,div,dt,
+em,embed,
+fieldset,figcaption,figure,footer,form,
+h1,h2,h3,h4,h5,h6,header,hgroup,html,
+i,iframe,img,input,
+label,legend,li,
+mark,
+nav,
+object,ol,option,
+p,pre,
+section,select,small,span,source,strong,
+table,tbody,tfoot,thead,th,tr,td,tt,textarea,
+ul,
+var,video{margin:0;padding:0;line-height:1;-webkit-box-sizing:border-box;box-sizing:border-box;}
+
+body{-webkit-text-size-adjust:none;}
+ul,ol,li{list-style:none;}
+table{width:100%;border-collapse:collapse;border-spacing:0;}
+h1,h2,h3,h4,h5,h6,hgroup{clear:both;}
+td,th{word-break:break-all;}
+img{width:100%;}
+img,fieldset,iframe{border:none;}
+img,input,button,select,textarea{vertical-align:middle;}
+input[disabled]{background:none;}
+::-webkit-input-placeholder,
+::-webkit-textarea-placeholder{color:#333;}
+label{vertical-align:middle;}
+a,
+button{text-decoration:none;-webkit-tap-highlight-color:transparent;}
+em{font-style:normal;}
+button{border:0;outline:0;cursor:pointer;background:none;}
+hr{display:none;font-size:0;width:100%;height:0;line-height:0;border:none;}
+legend,caption{position:absolute;left:-1000%;top:0;width:1px;height:1px;font-size:0;line-height:0;overflow:hidden;}
+map, area{border:0;outline:0}
+pre{white-space:pre-wrap;}
+
+/* clear */
+.clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden;}

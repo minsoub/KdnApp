@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>스마트 원전 - 현장 사진 전송</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body class="bg">
+<div class="wrapMain">
+	<h1 class="titCntXl"><small>스마트원전</small>현장 사진 전송</h1>
+	<ul class="listMn">
+		<li class="mn01"><a href="NKS004.html">사진 촬영</a></li>
+		<li class="mn02"><a href="NKS009.html">사진 전송</a></li>
+		<!-- li class="mn03"><a href="javascript:openLayer('.popNoti');">사진 공유</a></li  -->
+		<li class="mn03"><a href="javascript:checkConnection();">사진 공유</a></li>
+	</ul>
+	<!-- footer -->
+	<div class="footer">
+		<img src="images/logo.png" alt="한국수력원자력">한빛본부 3발전소
+	</div>
+	<!-- //footer -->
+</div>
+<!-- layer popup - 알림 팝업 -->
+<div class="wrapPop popNoti">
+	<div class="popCnt">
+		<div class="txt">
+			네트워크가 연결되지 않았습니다.
+		</div>
+		<p class="btnWrap typeB">
+			<a href="" class="btnClose">확인</a>
+		</p>
+	</div>
+</div>
+<!-- //layer popup - 알림 팝업 -->
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

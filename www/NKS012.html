@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>스마트 원전 - 현장 사진 전송</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- datepicker -->
+	<script type="text/javascript" src="js/jquery_calendar.min.js"></script>
+	<link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.min.css">
+	<!-- 대상 선택 팝업 - 트리 메뉴 -->
+	<script type="text/javascript" src="js/jquery.treeview.js"></script>
+	<link rel="stylesheet" href="css/jquery.treeview.css">
+	<script type="text/javascript">
+		$(function(){
+			// 부서 선택
+			$('.btnSlctTeam').on('click', function(){ //대상 변경 팝업
+				openLayer('.popSlctTeam');
+				$('#treeMn').treeview();
+				return false
+			});
+			// 이미지 중앙정렬
+			$(window).on('load resize', function(){
+				var thumbImg = $('.cntWrapImg .listImg .thumb img');
+				thumbImg.each(function(){
+					var imgH = $(this).height();
+					$(this).css('margin-top', -(imgH/2));
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<!-- header -->
+	<div class="header">
+		<span class="btnPrev"><a href="">이전 페이지</a></span>
+		<h1 class="tit">사진 공유</h1>
+	</div>
+	<!-- //header -->
+	<!-- contents -->
+	<div class="cntWrapImg shareImg">
+		<!-- srch area -->
+		<div class="wrapSrchGroup">
+			<div class="wrapInput">
+				<label for="">기간</label>
+				<input type="text" name="" placeholder="2019.08.27" class="datePic" readonly> <span class="dash">~</span>
+				<input type="text" name="" placeholder="2019.09.27" class="datePic" readonly>
+			</div>
+			<div class="wrapInput">
+				<span class="btnWrap"><a href="javascript:openLayer('.popSlctTeam')" class="btnColorA btnSlctTeam">부서 선택</a></span>
+				<input type="text" name="" class="inputTg" placeholder="4발전소 > 중앙관리본부 > 설비점검팀" readonly>
+			</div>
+			<div class="btnWrap"><a href="" class="btnLight">내 부서</a><a href="" class="btnColorA">내사진</a></div>
+		</div>
+		<!-- //srch area -->
+		<div class="wrapListImg">
+			<h2 class="tit">2019.12.20</h2>
+			<ul class="listImg">
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic01.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic02.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic01.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+			</ul>
+			<h2 class="tit">2019.12.20</h2>
+			<ul class="listImg">
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic01.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic02.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
+						<p class="num">0417152345</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //contents -->
+</div>
+<!-- laeyr poup - 부서선택 -->
+<div class="wrapPop popSlctTeam">
+	<div class="popCnt">
+		<div class="header">
+			<h2 class="titPop">부서선택</h2>
+			<span><a href="" class="btnClose">팝업 닫기</a></span>
+		</div>
+		<div class="cnt">
+			<p class="tblNoti">사진을 확인할 부서를 선택해주세요</p>
+			<div class="bxTreeMn scrollArea">
+				<ul id="treeMn" class="filetree">
+					<li><span class="folder">3발전소</span>
+						<ul>
+							<li><span class="folder">상생협력본부</span></li>
+							<li><span class="folder">업무지원</span>
+								<ul>
+									<li><span class="file">영업팀</span></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><span class="folder">직할 사업부</span></li>
+					<li><span class="folder">4발전소</span>
+						<ul>
+							<li><span class="folder">중앙관리본부</span>
+								<ul>
+									<li><span class="file slcted">설비점검팀</span></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><span class="folder">정비기술팀</span></li>				
+				</ul>
+			</div>
+			<script type="text/javascript">
+				$(function(){
+					$('#treeMn li').on('click', function(e){
+						$('#treeMn li span').removeClass('slcted');
+						$(this).find('> span').addClass('slcted');
+						e.stopPropagation();
+					});
+				});
+			</script>
+		</div>
+		<!-- btn -->
+		<div class="btnWrap">
+			<a href="">확인</a>
+		</div>
+	</div>
+</div>
+<!-- //laeyr poup - 부서선택 -->
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/NKS012.js"></script>
+</body>
+</html>
