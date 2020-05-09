@@ -38,8 +38,16 @@ var app = {
                     var storage = window.localStorage;
                     storage.setItem("kdnapp_session_data", JSON.stringify(data));
                     storage.setItem("kdnapp_session_dt",   (new Date()).getFormatDate())  // 2013-09-05 15:34:00
+                    var referer = storage.getItem("referer");
+                    storage.removeItem("referer");
                     // 로그인 완료 후 이전 페이지로 이동
-                    console.log("referer: " + document.referrer);
+                    console.log("referer: " + referer);
+                    if (referer == null)
+                    {
+                        location.href = "index.html";
+                    }else {
+                        location.href = referer;
+                    }                    
                     //history.back();
                 }else {
                     alert(authData.message);

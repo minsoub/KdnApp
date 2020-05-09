@@ -20,24 +20,27 @@ var app = {
                 function(result) {
                     console.log("데이터 삭제 성공!");
                     // 파일을 삭제한다.
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-                        //  alert(fileSystem.root.fullPath);
-                          fileSystem.root.getFile(data, {create:false}, function(fileEntry){
-                              fileEntry.remove(function(file){
-                                  console.log(data + " File removed!");
-                              },function(){                                  
-                                  console.log("error deleting the file["+data+"] " + error.code);
-                                  });
-                              },function(){
-                                  console.log("file does not exist["+data+"]");
-                              });
-                          },function(evt){
-                              console.log(evt.target.error.code);
-                      });
+                    var fileName = data.substring(data.lastIndexOf('/')+1);
+                    var ext = fileName.substring(data.lastIndexOf('.')+1);
+                    var folder = data.substring(0, data.lastIndexOf('/'));
+
+                    window.resolveLocalFileSystemURL(folder, function(entry) {
+                        entry.getFile (fileName, {create:false}, function(fileEntry) {
+                            fileEntry.remove(function(){
+                                console.log(data + " File removed!");
+                            }, function(error){
+                                console.log("error deleting the file["+data+"] " + error.code);
+                                result = false;
+                            }, function(){
+                                console.log("file does not exist["+data+"]");
+                                result = false;
+                            });
+                        });
+                    });
                 },
                 function(error){
                     result = false;                    
-                    console.log("데이터 삭제 실패!");
+                    console.log("데이터베이스 삭제 실패!");
                     return false;
                 }
             );
@@ -59,6 +62,7 @@ var app = {
         if (auth_data == null || auth_data == "")
         {
             // 로그인 이동
+            storage.setItem("referer", "NKS009.html");
             location.href="NKS008.html";        // 로그인 페이지 이동
         }else {
             // 만료일자 체크 : 로그인 후 1일
@@ -69,6 +73,7 @@ var app = {
             console.log("t2 : " + t2);
             if ((t2 - t1) > (24 * 60 * 60))
             {
+                storage.setItem("referer", "NKS009.html");
                 // 재 로그인을 수행
                 location.href="NKS008.html";        // 로그인 페이지 이동
             }else {

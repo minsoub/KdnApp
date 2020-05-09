@@ -1,7 +1,7 @@
 var kdn_login_url  = "http://220.126.231.124:28180/mLoginProc";
 var kdn_dept_url   = "http://220.126.231.124:28180/common/getDeptTreeData";
 var kdn_upload_url = "http://220.126.231.124:28180/image/fileUpload";
-
+var kdn_get_img_url = "http://220.126.231.124:28180/mobileImageListAjax";
 /* for public jquery */
 $(function(){
 	// layer popup - open
@@ -51,9 +51,29 @@ $(function(){
 		}
 	});
 });
-
+/**
+ * Cordova nofication.alert에서 호출 되는 빈 메소드
+ */
+function alertDismissed() {
+	// do nothing...
+}
+/**
+ * 공통 Alert 함수
+ */
+function commonAlert(title, msg)
+{
+	navigator.notification.alert(
+		msg, 
+		alertDismissed, 
+		title, 
+		'OK'
+	);
+}
 document.addEventListener("checkConnection", checkConnection, false);
 
+function onDeviceReady(){
+	console.log("deviceready called....");
+}
 function checkConnection() {
     var networkState = navigator.connection.type;
 
@@ -76,6 +96,37 @@ function checkConnection() {
     //alert('Connection type: ' + states[networkState]);
 }
 
+/**
+ * 공통으로 사용될 데이터베이스 쿼리문
+ * 데이터베이스 처리 후 파일도 삭제한다.
+ */
+function DeleteProcessDB(myDB, executeQuery, fileURL, deleteFileName)
+{
+	var executeQuery = "DELETE FROM tb_files where filename = ?";
+	myDB.executeSql(executeQuery, fileURL, function(result) {
+		console.log("데이터베이스 삭제 성공!");
+		var fileName = deleteFileName.substring(deleteFileName.lastIndexOf('/')+1);
+		var ext = fileName.substring(deleteFileName.lastIndexOf('.')+1);
+		var folder = deleteFileName.substring(0, deleteFileName.lastIndexOf('/'));
+		console.log(fileName);
+		console.log(folder);
+		window.resolveLocalFileSystemURL(folder, function(entry) {
+			entry.getFile (fileName, {create:false}, function(fileEntry) {
+				fileEntry.remove(function(){
+					console.log(deleteFileName + " File removed!");
+					return 1;
+				}, function(error){
+					return 0;
+				}, function(){
+					return 0;
+				});
+			});
+		});
+	},
+	function(error){
+		return 0;
+	});
+}
 
 Date.prototype.YYYYMMDDHHMMSS = function () {
 	var yyyy = this.getFullYear().toString();
@@ -105,5 +156,4 @@ function pad(number, length) {
 	}
 
 	return str;
-
 }

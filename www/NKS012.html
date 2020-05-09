@@ -47,14 +47,15 @@
 		<div class="wrapSrchGroup">
 			<div class="wrapInput">
 				<label for="">기간</label>
-				<input type="text" name="" placeholder="2019.08.27" class="datePic" readonly> <span class="dash">~</span>
-				<input type="text" name="" placeholder="2019.09.27" class="datePic" readonly>
+				<input type="text" name="searchStDt" id="searchStDt" placeholder="2019.08.27" class="datePic" readonly> <span class="dash">~</span>
+				<input type="text" name="searchEndDt" id="searchEndDt" placeholder="2020.09.27" class="datePic" readonly>
 			</div>
 			<div class="wrapInput">
 				<span class="btnWrap"><a href="javascript:openLayer('.popSlctTeam')" class="btnColorA btnSlctTeam">부서 선택</a></span>
-				<input type="text" name="" class="inputTg" placeholder="4발전소 > 중앙관리본부 > 설비점검팀" readonly>
+				<input type="text" name="deptName" id="deptName" class="inputTg" placeholder="4발전소 > 중앙관리본부 > 설비점검팀" readonly>
+				<input type="hidden" id="deptCd">
 			</div>
-			<div class="btnWrap"><a href="" class="btnLight">내 부서</a><a href="" class="btnColorA">내사진</a></div>
+			<div class="btnWrap"><a href="#" class="btnLight" id="searchMyDept">내 부서</a><a href="#" class="btnColorA" id="searchMyId">내사진</a></div>
 		</div>
 		<!-- //srch area -->
 		<div class="wrapListImg">
