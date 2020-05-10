@@ -148,6 +148,13 @@ Date.prototype.getFormatDate = function () {
 
 	return yyyy+"-" + MM + "-" + dd + " " +  hh + ":" + mm+ ":" + ss;
 };
+Date.prototype.getToDate = function () {
+	var yyyy = this.getFullYear().toString();
+	var MM = pad(this.getMonth() + 1,2);
+	var dd = pad(this.getDate(), 2);
+
+	return yyyy+"-" + MM + "-" + dd;
+};
 function pad(number, length) {
 
 	var str = '' + number;

@@ -5,7 +5,7 @@ var app = {
             x: 0,
             y: 60,
             width: window.screen.width,
-            height: 500, // window.screen.height,
+            height: window.screen.height,  // 500
             camera: CameraPreview.CAMERA_DIRECTION.BACK,
             toBack: true,
             tapPhoto: false,
@@ -133,6 +133,12 @@ var app = {
         }
         
     }, 
+    onBackKeyDown: function() {
+        console.log("onBackKeyDown called...");
+        CameraPreview.stopCamera();
+        CameraPreview.hide();
+        location.href="index.html";
+    }, 
     init: function() {
         //document.addEventListener("backbutton", onBackKeyDown, false);
         document.getElementById("zoom1").addEventListener('click', this.changeZoom1, false);
@@ -143,6 +149,8 @@ var app = {
         document.getElementById("btnFlash").addEventListener('click', this.changeFlashMode, false);
         // 사진 촬영
         document.getElementById("btnShot").addEventListener('click', this.takePicture, false);
+
+        document.addEventListener("backbutton", onBackKeyDown, false);
     }
 };
 
@@ -151,7 +159,8 @@ document.addEventListener('deviceready', function(){
     $("#btnFlash").addClass('off');        // flash mode off
     app.startCameraAbove();
 
-    onDeviceReady();
+    CameraPreview.show();
+    //onDeviceReady();
 }, false);
 
 function onDeviceReady()
@@ -163,5 +172,6 @@ function onBackKeyDown()
 {
     console.log("onBackKeyDown called...");
     CameraPreview.stopCamera();
+    CameraPreview.hide();
     location.href="index.html";
 }

@@ -22,22 +22,20 @@
 				$('#treeMn').treeview();
 				return false
 			});
-			// 이미지 중앙정렬
-			$(window).on('load resize', function(){
-				var thumbImg = $('.cntWrapImg .listImg .thumb img');
-				thumbImg.each(function(){
-					var imgH = $(this).height();
-					$(this).css('margin-top', -(imgH/2));
-				});
-			});
+
 		});
 	</script>
+	<style>
+		body {
+			background:rgba(255, 255, 255, 1.0);
+		}
+	</style>	
 </head>
 <body>
 <div class="wrap">
 	<!-- header -->
 	<div class="header">
-		<span class="btnPrev"><a href="">이전 페이지</a></span>
+		<span class="btnPrev"><a href="#" id="btnPrev">이전 페이지</a></span>
 		<h1 class="tit">사진 공유</h1>
 	</div>
 	<!-- //header -->
@@ -58,36 +56,12 @@
 			<div class="btnWrap"><a href="#" class="btnLight" id="searchMyDept">내 부서</a><a href="#" class="btnColorA" id="searchMyId">내사진</a></div>
 		</div>
 		<!-- //srch area -->
-		<div class="wrapListImg">
-			<h2 class="tit">2019.12.20</h2>
+		<div class="wrapListImg" id="imgShow">
+			<!-- <h2 class="tit">2019.12.20</h2>
 			<ul class="listImg">
 				<li>
 					<a href="">
 						<p class="thumb"><img src="images/_temp/@pic01.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic02.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic01.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
 						<p class="num">0417152345</p>
 					</a>
 				</li>
@@ -100,19 +74,7 @@
 						<p class="num">0417152345</p>
 					</a>
 				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic02.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<p class="thumb"><img src="images/_temp/@pic03.jpg" alt=""></p>
-						<p class="num">0417152345</p>
-					</a>
-				</li>
-			</ul>
+			</ul> -->
 		</div>
 	</div>
 	<!-- //contents -->
@@ -151,7 +113,7 @@
 					<li><span class="folder">정비기술팀</span></li>				
 				</ul>
 			</div>
-			<script type="text/javascript">
+			<!-- <script type="text/javascript">
 				$(function(){
 					$('#treeMn li').on('click', function(e){
 						$('#treeMn li span').removeClass('slcted');
@@ -159,11 +121,11 @@
 						e.stopPropagation();
 					});
 				});
-			</script>
+			</script> -->
 		</div>
 		<!-- btn -->
 		<div class="btnWrap">
-			<a href="">확인</a>
+			<a href="#" id="btnSelect">확인</a>
 		</div>
 	</div>
 </div>

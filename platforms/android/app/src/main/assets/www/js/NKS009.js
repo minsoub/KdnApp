@@ -47,9 +47,9 @@ var app = {
         });
         if (result == false)
         {
-            alert("파일 삭제하는데 에러가 발생하였습니다!!!");
+            commonAlert("파일삭제 에러", "파일 삭제하는데 에러가 발생하였습니다!!!");
         }else {
-            alert("파일 삭제를 완료하였습니다!!!");
+            commonAlert("파일삭제 완료", "파일 삭제를 완료하였습니다!!!");
             app.imageLoad(); // 전송 리스트 조회
         }
 
@@ -82,23 +82,24 @@ var app = {
                 var networkState = navigator.connection.type;
                 if (networkState == Connection.UNKNOWN || networkState == Connection.NONE)
                 {
-                    alert("네트워크 상태가 미연결 상태입니다!!!");
+                    commonAlert("네트워크 에러", "네트워크 상태가 미연결 상태입니다!!!");
                 }else {
                     var inputChck = $('.cntWrapImg .listImg li input[type="checkbox"]:checked');
                     if(inputChck.length == 0)
                     {
-                        alert("체크박스 선택 후 전송 버튼을 클릭하세요!!!");
+                        commonAlert("체크박스 선택", "체크박스 선택 후 전송 버튼을 클릭하세요!!!");
                         return;
                     }                    
                     // 파일을 전송한다.
-                    console.log("file 전송 시작...");
+                    console.log("file 전송 시작... " + inputChck.length);
                     openLayer('.layerProgBar');
                     // 전송크기 : inputCheck.length
                     // 전송그래프 : 초기값 
                     var size = "1/"+inputChck.length;
                     var graph = Math.ceil(100/inputChck.length);
-                    var num = 1;
+                    var num = 0;
                     var result = true;
+                    var total = inputChck.length;
                     
                     $("#send_size").text(size);
                     $("#send_graph").attr("width", "0%");
@@ -113,90 +114,90 @@ var app = {
                     
                     $('.cntWrapImg .listImg li input[type="checkbox"]:checked').each(function(){
                         var fileURL = $(this).val();
-                        var formData = new FormData();
-                        formData.append("empid",  empid);
-                        formData.append("deptCd", deptCd);
 
-                        window.resolveLocalFileSystemURL(fileURL, function(fileEntry) {
-                            fileEntry.file(function(file) {
-                                var reader = new FileReader();
-                                reader.onloadend = function(e) {
-                                    var imgBlob = new Blob([this.result], { type:file.type});
-                                    formData.append('files', imgBlob);
-                                };
-                                reader.readAsArrayBuffer(file);
-                            });
-                        });
-
-                        $.ajax({
-                            type : "POST", 
-                            url  : kdn_upload_url, 
-                            data : formData,  
-                            processData: false,
-                            contentType: false,
-                            success: function(data)
+                        var win = function(r)
+                        {
+                            console.log(r);
+                            var data = r.response;
+                            var rData = JSON.parse(data);
+                            console.log(rData);
+                            if (rData.code == "OK")
                             {
-                                console.log("ajax upload result : " + data);
-                                if (data.code == "OK")
-                                {
-                                    num = num + 1;
-                                    size = num+"/"+inputChck.length;
-                                    $("#send_size").text(size);
-                                    if (num == inputChck.length) {
-                                        $("#send_graph").attr("width", "100%");
-                                    } else { 
-                                        var p = graph * num;
-                                        $("#send_graph").attr("width", p+"%");
-                                    }
-                                    // 파일 삭제 후 데이터베이스 내용도 삭제한다.
-                                    // 데이터베이스 삭제
-                                    var executeQuery = "DELETE FROM tb_files where filename = ?";
-                                    myDB.executeSql(executeQuery, [fileURL], function(result) {
-                                            console.log("데이터베이스 삭제 성공!");
-                                            // 파일을 삭제한다.
-                                            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-                                                    //  alert(fileSystem.root.fullPath);
-                                                    fileSystem.root.getFile(fileURL, {create:false}, function(fileEntry){
-                                                            fileEntry.remove(function(file){
-                                                                    console.log(fileURL + " File removed!");
-                                                                },function(){                                  
-                                                                    console.log("error deleting the file["+fileURL+"] " + error.code);
-                                                                }
-                                                            );
-                                                        },function(){
-                                                            console.log("file does not exist["+fileURL+"]");
-                                                        }
-                                                    );
-                                                },function(evt){
-                                                    console.log(evt.target.error.code);
+                                num = num + 1;
+                                size = num+"/"+total;
+                                $("#send_size").text(size);
+                                if (num == total) {
+                                    $("#send_graph").css("width", "100%");
+                                } else { 
+                                    var p = graph * num;
+                                    $("#send_graph").css("width", p+"%");
+                                }
+                                // 파일 삭제 후 데이터베이스 내용도 삭제한다.
+                                // 데이터베이스 삭제
+                                var executeQuery = "DELETE FROM tb_files where filename = ?";                                            
+                                myDB.executeSql(executeQuery, [fileURL], function(result) {
+                                    console.log("데이터베이스 삭제 성공!");
+                                    var fileName = fileURL.substring(fileURL.lastIndexOf('/')+1);
+                                    var ext = fileName.substring(fileURL.lastIndexOf('.')+1);
+                                    var folder = fileURL.substring(0, fileURL.lastIndexOf('/'));
+                                    console.log(fileName);
+                                    console.log(folder);
+                                    window.resolveLocalFileSystemURL(folder, function(entry) {
+                                        entry.getFile (fileName, {create:false}, function(fileEntry) {
+                                            fileEntry.remove(function(){
+                                                console.log(fileURL + " File removed!");
+                                                console.log("num : " + num + ", total : " + total);
+                                                if (num == total) { // 완료
+                                                    closeLayer('.layerProgBar');
+                                                    commonAlert("전송완료", "전송을 완료하였습니다!!!");
+                                                    app.imageLoad(); // 전송 리스트 조회
                                                 }
-                                            );
-                                        },
-                                        function(error){
-                                            result = false;                    
-                                            console.log("데이터 삭제 실패!");
-                                            return false;
-                                        }
-                                    );
-                                }else {
-                                    result = false;
+                                            }, function(error){
+                                                closeLayer('.layerProgBar');
+                                                console.log("error deleting the file["+fileURL+"] " + error.code);
+                                                commonAlert("전송에러", "error deleting the file["+fileURL+"] " + error.code);
+                                                return false;
+                                            }, function(){
+                                                closeLayer('.layerProgBar');
+                                                console.log("file does not exist["+fileURL+"]");
+                                                commonAlert("전송에러", "file does not exist["+fileURL+"]");
+                                                return false;
+                                            });
+                                        });
+                                    });
+
+                                },
+                                function(error){
+                                    closeLayer('.layerProgBar');
+                                    commonAlert("전송에러", "데이터 파일 삭제 에러");
                                     return false;
-                                }                                
-                            }, 
-                            error: function(data) {
-                                console.log(data);
-                                result = false;
-                            }
-                        });
-                    }); 
-                    
-                    closeLayer('.layerProgBar');
-                    if (result == false) {
-                        alert("파일 전송하는데 에러가 발생하였습니다!!!");
-                    }else {
-                        alert("전송을 완료하였습니다!!!");
-                        app.imageLoad(); // 전송 리스트 조회
-                    }
+                                });
+                            }else {
+                                closeLayer('.layerProgBar');
+                                commonAlert("전송에러", rData.message);
+                                return false;
+                            }                                      
+                        }
+                        var fail = function(error)
+                        {
+                            closeLayer('.layerProgBar');
+                            console.log(error);
+                            commonAlert("전송에러", "파일 전송하는데 에러가 발생하였습니다!!!["+error.code+"]");
+                            return false;
+                        }
+                        var options = new FileUploadOptions();
+                        options.fileKey = "files";
+                        options.fileName = fileURL.substr(fileURL.lastIndexOf('/')+1);
+
+                        var params = {};
+                        params.empid = empid;
+                        params.deptCd = deptCd;
+
+                        options.params = params;
+
+                        var ft = new FileTransfer();
+                        ft.upload(fileURL, encodeURI(kdn_upload_url), win, fail, options);
+                    }); // each end..
                 }
             }
         }

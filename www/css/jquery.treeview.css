@@ -10,7 +10,7 @@
 
 .treeview .hitarea {
 	display:none;
-	background: url(images/treeview-default.gif) -64px -25px no-repeat;
+	background: url(../images/treeview-default.gif) -64px -25px no-repeat;
 	height: 16px;
 	width: 16px;
 	margin-left: -16px;
@@ -34,32 +34,32 @@
 
 #treecontrol { margin: 1em 0; display: none; }
 
-.treeview li { background: url(images/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li { background: url(../images/treeview-default-line.gif) 0 0 no-repeat; }
 .treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
 
 .treeview .expandable-hitarea { background-position: -80px -3px; }
 
 .treeview li.last {background-position: 0 -1766px }
-.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(images/treeview-default.gif); }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(../images/treeview-default.gif); }
 .treeview li.lastCollapsable { background-position: 0 -111px }
 .treeview li.lastExpandable { background-position: -32px -67px }
 
 .treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
 
-.treeview-red li { background-image: url(images/treeview-red-line.gif); }
-.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(images/treeview-red.gif); }
+.treeview-red li { background-image: url(../images/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(../images/treeview-red.gif); }
 
-.treeview-black li { background-image: url(images/treeview-black-line.gif); }
-.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(images/treeview-black.gif); }
+.treeview-black li { background-image: url(../images/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(../images/treeview-black.gif); }
 
-.treeview-gray li { background-image: url(images/treeview-gray-line.gif); }
-.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(images/treeview-gray.gif); }
+.treeview-gray li { background-image: url(../images/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(../images/treeview-gray.gif); }
 
-.treeview-famfamfam li { background-image: url(images/treeview-famfamfam-line.gif); }
-.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(images/treeview-famfamfam.gif); }
+.treeview-famfamfam li { background-image: url(../images/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(../images/treeview-famfamfam.gif); }
 
 .treeview .placeholder {
-	background: url(images/ajax-loader.gif) 0 0 no-repeat;
+	background: url(../images/ajax-loader.gif) 0 0 no-repeat;
 	height: 16px;
 	width: 16px;
 	display: block;
@@ -73,10 +73,10 @@
 .filetree li span{display:inline-block;height:24px;margin-left:4px;padding:0 5px;line-height:24px;cursor:pointer;}
 .filetree li .folder:before{content:'';position:absolute;display:block;width:16px;height:12px;top:5px;left:0;}
 .filetree li .file{margin-left:-5px;}
-.filetree li .file:before{content:'';position:absolute;left:4px;top:7px;padding:5px 0 5px 10px;display:block;background: url(/resources/images/ico_file.png) 0 0 no-repeat;background-size:5px;z-index:10;}
-.filetree li.collapsable .folder:before{background:url(/resources/images/ico_folder_opened.png) 0 0 no-repeat;background-size:16px;}
+.filetree li .file:before{content:'';position:absolute;left:4px;top:7px;padding:5px 0 5px 10px;display:block;background: url(../images/ico_file.png) 0 0 no-repeat;background-size:5px;z-index:10;}
+.filetree li.collapsable .folder:before{background:url(../images/ico_folder_opened.png) 0 0 no-repeat;background-size:16px;}
 .filetree li .folder:before,
 .filetree li.expandable .folder:before,
-.filetree li.closed .folder:before{background:url(/resources/images/ico_folder_closed.png) 0 0 no-repeat;background-size:16px;}
+.filetree li.closed .folder:before{background:url(../images/ico_folder_closed.png) 0 0 no-repeat;background-size:16px;}
 .filetree > li > ul > li:before{content:'';display:block;width:16px;height:1px;position:absolute;top:11px;left:-14px;background:#d5d5d5;z-index:0}
 .filetree li .slcted{display:block;-webkit-border-radius:4px;border-radius:4px;background-color:#ccf2e4 !important;}

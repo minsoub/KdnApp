@@ -33,6 +33,7 @@ body.bg > [class*="wrap"]{position:relative;z-index:1}
 .mtMd{margin-top:25px !important;}
 .mtSLg{margin-top:30px !important;}
 
+
 /* titles */
 .titCntXl{width:245px;margin:0 auto 25px;font-size:2.875rem;font-weight:normal;color:#fff;}
 .titCntXl small{display:block;margin-bottom:11px;font-size:1.4375rem;}
@@ -73,6 +74,7 @@ div.input{color:#777;background:#ededed;}
 .ui-datepicker-trigger{width:35px;margin-left:6px;}
 
 /* ========== Layouts ========== */
+.wrap{background:rgba(255, 255, 255, 1.0);}
 /* header */
 .wrap .header{overflow:hidden;position:relative;height:70px;padding:0 21px;line-height:70px;background:#00bc78;}
 .wrap .header .btnPrev a{display:inline-block;width:14px;height:26px;margin:-2px 10px 0 0;vertical-align:middle;font-size:0;text-indent:-9999px;background:url(../images/obj_group.png) no-repeat 0 -77px;background-size:300px;}
@@ -135,7 +137,7 @@ div.input{color:#777;background:#ededed;}
 .cntSetName .layerSet button{width:69px;height:42px;font-size:1.41667rem;color:#fff;text-align:center;line-height:42px;-webkit-border-radius:3px;border-radius:3px;background:#303030;}
 
 /* 사진 전송 */
-.cntWrapImg{overflow:hidden;padding:0 0 85px;}
+.cntWrapImg{overflow:hidden;padding:0 0 85px;background:rgba(255, 255, 255, 1.0);}
 .cntWrapImg .wrapInput{height:50px;padding:0 20px;font-size:1.125rem;color:#5e5e5e;line-height:52px;}
 .cntWrapImg .wrapInput input[type="checkbox"]{display:none;}
 .cntWrapImg .wrapInput input[type="checkbox"] + label:before{content:'';display:inline-block;width:16px;height:16px;margin:-1px 5px 0 0;vertical-align:middle;background:url(../images/obj_group.png) no-repeat -59px -77px;background-size:300px;cursor:pointer;}
@@ -169,10 +171,10 @@ div.input{color:#777;background:#ededed;}
 .shareImg .wrapListImg .tit{height:40px;padding:0 20px;margin-bottom:-2px;font-size:1.29167rem;font-weight:normal;line-height:42px;color:#5e5e5e;border-top:1px solid #afafaf;}
 
 /* 사진 상세보기 */
-.cntViewDtl{position:relative;padding:52px 0 45px;}
+.cntViewDtl{position:relative;padding:52px 0 45px;background:rgba(255, 255, 255, 1.0);}
 .cntViewDtl .tit{position:fixed;top:0;left:0;right:0;height:52px;padding:23px 28px 0;font-size:1.16667rem;font-weight:normal;color:#fff;background:#000;z-index:50;}
-.cntViewDtl .slideImg{position:fixed !important;top:0;left:0;/*right:0;*/bottom:0;}
-.cntViewDtl .slideImg li{position:absolute;top:50%;left:0;right:0;}
+.cntViewDtl .slideImg{position:fixed !important;top:0;left:0;/*right:0;*/bottom:0;background:rgba(255, 255, 255, 1.0);}
+.cntViewDtl .slideImg li{position:absolute;top:50%;left:0;right:0;background:rgba(255, 255, 255, 1.0);}
 .cntViewDtl .btnGroup{position:fixed;left:0;right:0;bottom:0;height:45px;font-size:0;line-height:45px;text-align:center;background:rgba(0,0,0,.5);z-index:50;}
 .cntViewDtl .btnGroup [class^="btn"]{display:inline-block;margin:0 25px;font-size:0;text-indent:-9999px;vertical-align:middle;background:url(../images/obj_group.png) no-repeat;background-size:300px;}
 .cntViewDtl .btnGroup .btnDel{width:25px;height:23px;background-position:-255px -25px}

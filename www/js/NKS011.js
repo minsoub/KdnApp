@@ -283,31 +283,31 @@ var app = {
                     picArea.bxSlider({	
                         infiniteLoop : false,	
                         touchEnabled: true,
-                        slideMargin: 0,
-                        adaptiveHeight: false,
+                        slideMargin: 10,
+                        adaptiveHeight: true,
                         startSlide: index,		
                         controls:false,
                         pager:false, 
                         useCSS: true,
                         onSliderLoad: function() {  
                             console.log('onSliderLoad'); //executed
-                            thumbImg.each(function(){
-                                $(this).load(function() {   // 이미지 높이를 구하려면 load함수를 수행해야 된다(중요)
-                                    //console.log($(this).height());
-                                    var imgH = $(this).height();
-                                    $(this).css('margin-top', -(imgH/2));
-                                });                        
-                            }); 
+                            // thumbImg.each(function(){
+                            //     $(this).load(function() {   // 이미지 높이를 구하려면 load함수를 수행해야 된다(중요)
+                            //         //console.log($(this).height());
+                            //         var imgH = $(this).height();
+                            //         $(this).css('margin-top', -(imgH/2));
+                            //     });                        
+                            // }); 
                         },
                         onSlideAfter: function($slideElement, oldIndex, newIndex) {
                             console.log('onSlideAfter'); //executed
-                            thumbImg.each(function(){
-                                $(this).load(function() {   // 이미지 높이를 구하려면 load함수를 수행해야 된다(중요)
-                                    //console.log($(this).height());
-                                    var imgH = $(this).height();
-                                    $(this).css('margin-top', -(imgH/2));
-                                });                        
-                            }); 
+                            // thumbImg.each(function(){
+                            //     $(this).load(function() {   // 이미지 높이를 구하려면 load함수를 수행해야 된다(중요)
+                            //         //console.log($(this).height());
+                            //         var imgH = $(this).height();
+                            //         $(this).css('margin-top', -(imgH/2));
+                            //     });                        
+                            // }); 
                         },
                         onSlideNext: function($slideElement, oldIndex, newIndex) {
                             console.log('onSlideNext'); //executed
